@@ -1,0 +1,76 @@
+
+#-----------------------------------------------------------
+# This simulates the graph shown in 
+# http://think-like-a-git.net/
+#       sections/
+#           rebase-from-the-ground-up/
+#               using-git-cherry-pick-to-simulate-git-rebase.html
+#
+# Run as below: 
+# rm -rf .git/ srcfile; while read n; do eval ${n}; done </tmp/prepare_graph
+#-----------------------------------------------------------
+git init
+touch srcfile
+git add srcfile                                 # Add to git index
+git commit -m \"inited src\" ; git log --oneline   
+
+git checkout -b bar
+git branch
+
+echo  -en \"This is point A\\n\" > srcfile              # Create srcfile
+git add srcfile                                 # Add to git index
+git commit -m \"Added A\" ; git log --oneline     # Commit A
+
+echo -en \"This is point B\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added B\" ; git log --oneline     # Commit B
+cat srcfile
+
+#-----------------------------------------------------------
+# Branch to foo
+git checkout -b foo ; git branch
+echo -en \"This is point F\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added F\" ; git log --oneline     # Commit F
+
+echo -en \"This is point G\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added G\" ; git log --oneline     # Commit G
+
+echo -en \"This is point H\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added H\" ; git log --oneline     # Commit H
+cat srcfile
+#-----------------------------------------------------------
+
+git checkout bar ; git branch
+echo -en \"This is point C\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added C\" ; git log --oneline     # Commit C
+
+#-----------------------------------------------------------
+# Branch to baz
+git checkout -b baz ; git branch
+echo -en \"This is point I\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added I\" ; git log --oneline     # Commit I
+
+echo -en \"This is point J\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added J\" ; git log --oneline     # Commit J
+
+echo -en \"This is point K\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added K\" ; git log --oneline     # Commit K
+#-----------------------------------------------------------
+
+git checkout bar ; git branch
+echo -en \"This is point D\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added D\" ; git log --oneline     # Commit D
+
+echo -en \"This is point E\\n\" >> srcfile         
+git add srcfile                                 # Add to git index
+git commit -m \"Added E\" ; git log --oneline     # Commit E
+
+#-----------------------------------------------------------
