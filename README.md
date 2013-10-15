@@ -1,5 +1,8 @@
 zejunk
 ======
-tsttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttthdfshdfssdfdsffd:wq
-tf
- repo for tinkering around with git 
+ 
+A simple junk repo for tinkering around with git 
+
+To be discarded after use.
+
+
